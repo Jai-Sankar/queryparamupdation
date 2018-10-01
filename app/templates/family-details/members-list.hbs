@@ -1,0 +1,24 @@
+{{#basic-dropdown as |dropdown|}}
+  {{#dropdown.trigger class="dropdown"}}
+    Filter : {{filter_by}}
+  {{/dropdown.trigger}}
+  {{#dropdown.content}}
+    <ul class="dropdown-menu" {{action dropdown.actions.close}}>
+      <li {{action "filterUpdated" 'all'}}>All</li>
+      <li {{action "filterUpdated" 'men'}}>Men</li>
+      <li {{action "filterUpdated" 'women'}}>Women</li>
+    </ul>
+  {{/dropdown.content}}
+{{/basic-dropdown}}
+
+<ol>
+  {{#each model.family_members as |familyMember|}}
+    <li>
+      {{#link-to 'family-details.members-list.member-details' familyMember.member_id}}
+        {{familyMember.name}}
+      {{/link-to}}
+    </li>
+  {{/each}}
+</ol>
+
+{{outlet}}
